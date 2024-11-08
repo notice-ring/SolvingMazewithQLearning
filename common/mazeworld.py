@@ -15,7 +15,6 @@ class MazeWorld:
             3: "RIGHT",
         }
 
-
         self.goal_state = (3, 3) # 목표 상태
         self.end_state = (2, 1) # 도달 시 과제 실패
         self.start_state = (0, 2) # 시작 상태
@@ -27,7 +26,7 @@ class MazeWorld:
             [[0, 1], [3], [0, 2], [1]],
             [[0, 1, 3], [1, 2, 3], [1, 2, 3], [0, 1, 2]],
             [[0, 3], [0, 2, 3], [0, 2], [0]],
-        ])
+        ], dtype=object)
         
     @property
     def height(self): # 세로
