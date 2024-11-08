@@ -1,1 +1,7 @@
-My first RL study
+강화학습 독학
+
+Dynamic Programming부터 Q Learning까지 강화학습의 기초가 되는 알고리즘들에 대하여 학습하였습니다.
+
+환경은 제가 만든 미로인 MazeWrold입니다.
+
+제가 짠 코드들은 서적 "밑바닥부터 시작하는 딥러닝 4"를 참고하였습니다.
