@@ -25,7 +25,7 @@ class MazeWorld:
         start: Tuple[int] = DEFAULT_START,
         goal: Tuple[int] = DEFAULT_GOAL,
         end: Tuple[int] = DEFAULT_END,
-        directions: List[List[int]] = DEFAULT_MAP,
+        directions: List[List[List[int]]] = DEFAULT_MAP,
     ):
         self.action_space = [0, 1, 2, 3]  # 행동 공간
         self.action_meaning = {  # 행동의 의미
