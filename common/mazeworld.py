@@ -42,7 +42,7 @@ class MazeWorld:
 
         # 미로의 두께가 없는 벽을 표현하기 위하여 각 상태에서 이동할 수 있는 방향을 명시
         self.possible_direction = np.array(directions, dtype=object)
-
+    
     @property
     def height(self):  # 세로
         return len(self.possible_direction)
