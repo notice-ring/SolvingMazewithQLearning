@@ -1,6 +1,6 @@
 from typing import List, Tuple
 import tkinter as tk
-from design_option import DesignOption
+from .design_option import DesignOption
 
 VERTICAL, HORIZONTAL = 0, 1
 WALL_MODE, AREA_MODE = 0, 1
@@ -138,8 +138,8 @@ class WallBuilder:
         )
 
     def __draw_marking(self, marking):
-        x = (marking.col + 0.5) * self.__width // (self.__cols + 2)
-        y = (marking.row + 0.5) * self.__height // (self.__rows + 2)
+        x = (marking.col + 1.5) * self.__width // (self.__cols + 2)
+        y = (marking.row + 1.5) * self.__height // (self.__rows + 2)
         self.__canvas.create_oval(
             x - 10,
             y - 10,
@@ -170,9 +170,9 @@ class WallBuilder:
     def __on_area_click(self, event):
         x_offset = event.x * (self.__cols + 2) / self.__width
         y_offset = event.y * (self.__rows + 2) / self.__height
-        x, y = int(x_offset), int(y_offset)
+        x, y = int(x_offset) - 1, int(y_offset) - 1
 
-        if x <= 0 or x >= self.__cols + 1 or y <= 0 or y >= self.__rows + 1:
+        if x < 0 or x >= self.__cols or y < 0 or y >= self.__rows:
             return
         for marking in self.__markings:
             if marking.row == y and marking.col == x:

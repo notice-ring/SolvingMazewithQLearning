@@ -1,8 +1,10 @@
+# 클래스별로 파일을 분리하는 게 좋을까요?
+
 from typing import Dict
-import ttkbootstrap as ttk
-from wall_builder import WallBuilder
-from design_option import DesignOption
 import tkinter.messagebox as msgbox
+import ttkbootstrap as ttk
+from .wall_builder import WallBuilder
+from .design_option import DesignOption
 
 
 class Page:
@@ -108,7 +110,7 @@ class StartPage(Page):
 
     def extract_data(self) -> Dict:
         data = {"start": self.__wall_builder.selected_area}
-        self.__wall_builder.reset_temp_marking()
+        self.__wall_builder.reset_temp_marking()  # TODO: 이게 여기 있는 게 마음에 안 듦
         return data
 
 

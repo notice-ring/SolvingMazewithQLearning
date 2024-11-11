@@ -1,9 +1,9 @@
 from typing import Tuple, Dict
 from collections.abc import Callable
 import ttkbootstrap as ttk
-from wall_builder import WallBuilder
-
-from pages import InitPage, WallPage, StartPage, GoalPage, EndPage
+from .wall_builder import WallBuilder
+from .pages import InitPage, WallPage, StartPage, GoalPage, EndPage
+import time
 
 WINDOW_SIZE = 700
 MINROW = MINCOL = 3
@@ -63,7 +63,7 @@ class MainWindow:
         if not page.dismiss():
             return
 
-        # TODO: Wall Builder 부분이 뭔가 이곳 저곳에 있어서 뭔가 이상함
+        # TODO: Wall Builder 부분이 만들고 넘기는 부분이 너무 중구난방임.
         data = page.extract_data()
         if self.__now_page == 0:
             self.__wall_builder = WallBuilder(
@@ -77,13 +77,10 @@ class MainWindow:
             self.__result.update(data)
 
         if self.__now_page == len(self.__pages) - 1:
-            self.__on_finish(self.__result)
+            self.__root.quit()
             self.__root.destroy()
+            self.__on_finish(self.__result)
             return
+
         self.__now_page += 1
         self.__pages[self.__now_page].show(self.__wall_builder)
-
-
-if __name__ == "__main__":
-    mw = MainWindow(on_finish=lambda x: print(x))
-    mw.show()
