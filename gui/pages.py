@@ -1,6 +1,6 @@
 # 클래스별로 파일을 분리하는 게 좋을까요?
 
-from typing import Dict
+from typing import Any
 import tkinter.messagebox as msgbox
 import ttkbootstrap as ttk
 from .wall_builder import WallBuilder
@@ -34,12 +34,14 @@ class Page:
     def dismiss(self) -> bool:
         return True
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> dict[str, Any]:
         raise NotImplementedError
 
 
 class InitPage(Page):
-    def __init__(self, root: ttk.Window, label: ttk.Label, options: Dict) -> "InitPage":
+    def __init__(
+        self, root: ttk.Window, label: ttk.Label, options: dict[str, Any]
+    ) -> "InitPage":
         super().__init__(root, label, "Select the size of the maze.")
         self.options = options
 
@@ -70,7 +72,7 @@ class InitPage(Page):
         self.__frame.pack_forget()
         return True
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> dict[str, Any]:
         return {"row": int(self.__row.get()), "col": int(self.__col.get())}
 
 
@@ -86,7 +88,7 @@ class WallPage(Page):
         self.__wall_builder.change_click_event()
         return True
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> dict[str, Any]:
         return {"directions": self.__wall_builder.get_movement_data()}
 
 
@@ -108,7 +110,7 @@ class StartPage(Page):
         )
         return True
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> dict[str, Any]:
         data = {"start": self.__wall_builder.selected_area}
         self.__wall_builder.reset_temp_marking()  # TODO: 이게 여기 있는 게 마음에 안 듦
         return data
@@ -132,7 +134,7 @@ class GoalPage(Page):
         )
         return True
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> dict[str, Any]:
         data = {"goal": self.__wall_builder.selected_area}
         self.__wall_builder.reset_temp_marking()
         return data
@@ -156,7 +158,7 @@ class EndPage(Page):
         )
         return True
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> dict[str, Any]:
         data = {"end": self.__wall_builder.selected_area}
         self.__wall_builder.reset_temp_marking()
         return data

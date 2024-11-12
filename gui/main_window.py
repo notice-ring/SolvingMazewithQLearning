@@ -1,4 +1,4 @@
-from typing import Tuple, Dict
+from typing import Any
 from collections.abc import Callable
 import ttkbootstrap as ttk
 from .wall_builder import WallBuilder
@@ -15,9 +15,9 @@ class MainWindow:
         self,
         title: str = "Maze Solver",  # 창 제목
         size: int = 700,  # 창 크기
-        row_cnt: Tuple[int] = (MINROW, MAXROW),  # 미로 열 개수 상/하한
-        col_cnt: Tuple[int] = (MINCOL, MAXCOL),  # 미로 행 개수 상/하한
-        on_finish: Callable[[Dict], None] = None,  # 완료시 호출할 함수
+        row_cnt: tuple[int, int] = (MINROW, MAXROW),  # 미로 열 개수 상/하한
+        col_cnt: tuple[int, int] = (MINCOL, MAXCOL),  # 미로 행 개수 상/하한
+        on_finish: Callable[[dict[str, Any]], None] = None,  # 완료시 호출할 함수
     ) -> "MainWindow":
         self.__size = size
         self.__row_cnt = row_cnt

@@ -1,4 +1,3 @@
-from typing import List, Tuple
 import tkinter as tk
 from .design_option import DesignOption
 
@@ -28,7 +27,7 @@ class WallBuilder:
         self.__canvas.pack()
 
         # 초기 데이터 설정
-        self.__markings: List["Marking"] = []  # 영역 표시
+        self.__markings: list["Marking"] = []  # 영역 표시
         self.__temp_marking: "Marking" = None  # 임시 영역 표시(클릭시 변경되는 영역)
         self.__walls = {  # 벽 정보
             VERTICAL: [
@@ -45,7 +44,7 @@ class WallBuilder:
         self.draw()
 
     @property
-    def selected_area(self) -> Tuple[int]:
+    def selected_area(self) -> tuple[int, int]:
         if self.__temp_marking:
             return self.__temp_marking.row, self.__temp_marking.col
         return None
@@ -95,7 +94,7 @@ class WallBuilder:
             self.__canvas.bind("<Button-1>", self.__on_wall_click)
 
     # MazeWorld에 필요한 벽 데이터를 추출하는 함수
-    def get_movement_data(self) -> List[List[List[int]]]:
+    def get_movement_data(self) -> list[list[list[int]]]:
         result = [[[] for _ in range(self.__cols)] for _ in range(self.__rows)]
 
         for row in range(self.__rows):
