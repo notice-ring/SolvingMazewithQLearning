@@ -3,7 +3,6 @@ if "__file__" in globals():
 
     sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from typing import List, Tuple
 import numpy as np
 import common.mazeworld_render as render_helper
 
@@ -22,10 +21,10 @@ DEFAULT_MAP = [
 class MazeWorld:
     def __init__(
         self,
-        start: Tuple[int] = DEFAULT_START,
-        goal: Tuple[int] = DEFAULT_GOAL,
-        end: Tuple[int] = DEFAULT_END,
-        directions: List[List[List[int]]] = DEFAULT_MAP,
+        start: tuple[int, int] = DEFAULT_START,
+        goal: tuple[int, int] = DEFAULT_GOAL,
+        end: tuple[int, int] = DEFAULT_END,
+        directions: list[list[list[int]]] = DEFAULT_MAP,
     ):
         self.action_space = [0, 1, 2, 3]  # 행동 공간
         self.action_meaning = {  # 행동의 의미
