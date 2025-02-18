@@ -1,7 +1,9 @@
-강화학습 독학
+This is my self-study about Reinforcement Running
 
-Dynamic Programming부터 Q Learning까지 강화학습의 기초가 되는 알고리즘들에 대하여 학습하였습니다.
+I studied with the book "Deep Learning from scratch 4"
 
-환경은 제가 만든 미로인 MazeWrold입니다.
+I started Dynamic Programming to Q Learning, that are the orgin algorithm of Reinforcement Running
 
-제가 짠 코드들은 서적 "밑바닥부터 시작하는 딥러닝 4"를 참고하였습니다.
+And I made the environment "MazeWorld"
+
+Our project is making a maze, then simple Q learning will solve your maze
